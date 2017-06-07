@@ -5,6 +5,9 @@ module.exports = {
     sourceType: 'module'
   },
   extends: 'eslint:recommended',
+  globals: {
+    server: true
+  },
   env: {
     browser: true
   },

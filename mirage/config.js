@@ -26,6 +26,8 @@ export default function() {
     http://www.ember-cli-mirage.com/docs/v0.2.x/shorthands/
   */
 
+  this.get('/users/:id')
+
   this.post('/api/token-auth', (schema, request) => {
     const { password } = JSON.parse(request.requestBody);
 

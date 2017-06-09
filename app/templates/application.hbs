@@ -3,6 +3,9 @@
     <button onclick={{action 'logout'}}>Logout</button>
     {{#if currentUser.user}}
       <p>Signed in as {{currentUser.user.fullName}}</p>
+      {{#if (can "access admin for user")}}
+        {{#link-to 'admin'}}Admin{{/link-to}}
+      {{/if}}
     {{/if}}
   {{else}}
     {{#link-to 'login'}}Login{{/link-to}}

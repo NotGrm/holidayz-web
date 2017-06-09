@@ -29,16 +29,21 @@ export default function() {
   this.get('/users/:id')
 
   this.post('/api/token-auth', (schema, request) => {
-    const { password } = JSON.parse(request.requestBody);
+    const { username, password } = JSON.parse(request.requestBody);
 
     if (password !== 'secret') {
       return new Response(401, {some: 'header', 'Content-Type': 'application/json'}, {
         error: 'Invalid credentials'
       });
     }
+    let token;
 
-    return {
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ'
-    };
+    if(username == 'admin@example.org') {
+      token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ'
+    } else if (username == 'employee@example.org') {
+      token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3ODk0NTYxMjMwIn0.tS1iT0KLUaTC7T89BjMyQ4OmgGxDbHi8FNZwfjdNYO4'
+    }
+
+    return { token };
   })
 }

@@ -10,4 +10,5 @@ export default function(server) {
   // server.createList('post', 10);
 
   server.create('user', { id: 1234567890, role: 'admin' });
+  server.create('user', { id: 7894561230, role: 'employee' });
 }

@@ -1,0 +1,10 @@
+<div class="">
+  {{#link-to 'admin.users.new'}}Add user{{/link-to}}
+  <ul>
+    {{#each model as |user|}}
+      <li>{{#link-to 'admin.users.show' user}}{{user.fullName}}{{/link-to}}</li>
+    {{/each}}
+  </ul>
+</div>
+
+{{outlet}}

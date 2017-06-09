@@ -8,7 +8,7 @@ export default Factory.extend({
     return faker.name.lastName();
   },
   email() {
-    return `${this.firstName}.${this.lastName}@example.org`;
+    return `${this.firstName.toLowerCase()}.${this.lastName.toLowerCase()}@example.org`;
   },
   reference() {
     return `${faker.finance.account(4)}`;

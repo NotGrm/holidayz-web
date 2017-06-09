@@ -1,0 +1,11 @@
+<div class="">
+  <h1>
+    {{model.fullName}}
+    <small>{{#link-to 'admin.users.edit' model}}Edit{{/link-to}}</small>
+  </h1>
+  <p>Email: {{model.email}}</p>
+  <p>Reference: {{model.reference}}</p>
+  <p>Role: {{model.role}}</p>
+
+  <button {{action 'remove'}}>Remove</button>
+</div>

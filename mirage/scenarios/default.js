@@ -1,5 +1,5 @@
 export default function(server) {
-
+  server.logging = false;
   /*
     Seed your development database using your factories.
     This data will not be loaded in your tests.
@@ -11,4 +11,10 @@ export default function(server) {
 
   server.create('user', { id: 1234567890, role: 'admin' });
   server.create('user', { id: 7894561230, role: 'employee' });
+
+  let departments = server.createList('department', 5);
+
+  departments.forEach((department) => {
+    server.createList('user', 3, {department});
+  })
 }

@@ -1,0 +1,20 @@
+<div class="">
+  <h1>
+    {{department.name}}
+    <small>{{#link-to 'admin.departments.edit' department}}Edit{{/link-to}}</small>
+  </h1>
+
+  <h2>Members</h2>
+  <ul>
+    {{#each department.members as |user|}}
+      <li>{{user.fullName}}</li>
+    {{/each}}
+  </ul>
+  <ul>
+    {{#each availableUsers as |user|}}
+      <li>{{user.fullName}}</li>
+    {{/each}}
+  </ul>
+
+  <button {{action 'remove'}}>Remove</button>
+</div>

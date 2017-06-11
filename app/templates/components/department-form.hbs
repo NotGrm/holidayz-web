@@ -1,0 +1,4 @@
+<form {{action onSubmit on='submit'}}>
+  <input type="text" value={{department.name}} onchange={{action (mut department.name) value="target.value"}} data-test-firstname>
+  <button type="submit" name="button" data-test-submit>Submit</button>
+</form>

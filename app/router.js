@@ -14,6 +14,11 @@ Router.map(function() {
       this.route('show', { path: '/:user_id'});
       this.route('edit', { path: '/:user_id/edit'});
     });
+    this.route('departments', function() {
+      this.route('new');
+      this.route('show', { path: '/:department_id'});
+      this.route('edit', { path: '/:department_id/edit'});
+    });
   });
 });
 

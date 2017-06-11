@@ -7,6 +7,7 @@ export default DS.Model.extend({
   email: DS.attr('string'),
   reference: DS.attr('string'),
   role: DS.attr('string'),
+  department: DS.belongsTo('department', {inverse: 'members'}),
 
   fullName: Ember.computed('firstName', 'lastName', function() {
     return `${this.get('firstName')} ${this.get('lastName')}`

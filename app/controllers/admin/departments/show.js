@@ -14,6 +14,9 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
+    addMembers() {
+    },
+
     remove(){
       this.get('department').destroyRecord().then(() => {
         this.transitionToRoute('admin.departments');

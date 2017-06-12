@@ -4,17 +4,29 @@
     <small>{{#link-to 'admin.departments.edit' department}}Edit{{/link-to}}</small>
   </h1>
 
+  <button {{action 'remove'}}>Remove</button>
+
   <h2>Members</h2>
+
+  {{#power-select-multiple
+    options=availableUsers
+    selected=selected
+    onchange=(action (mut selected))
+    as |user|
+  }}
+    {{user.fullName}}
+  {{/power-select-multiple}}
+  <button {{action 'addMembers'}}>Add users to department</button>
+
   <ul>
     {{#each department.members as |user|}}
       <li>{{user.fullName}}</li>
     {{/each}}
   </ul>
   <ul>
-    {{#each availableUsers as |user|}}
+    {{#each selected as |user|}}
       <li>{{user.fullName}}</li>
     {{/each}}
   </ul>
 
-  <button {{action 'remove'}}>Remove</button>
 </div>

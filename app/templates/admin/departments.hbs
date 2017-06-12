@@ -2,7 +2,7 @@
   {{#link-to 'admin.departments.new'}}Add department{{/link-to}}
   <ul>
     {{#each model as |department|}}
-      <li>{{#link-to 'admin.departments.show' department}}{{department.name}}{{/link-to}}</li>
+      <li>{{#link-to 'admin.departments.show' department.id}}{{department.name}}{{/link-to}}</li>
     {{/each}}
   </ul>
 </div>

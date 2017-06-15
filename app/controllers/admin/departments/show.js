@@ -1,12 +1,17 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
-  department: Ember.computed.alias('model.department'),
-  users: Ember.computed.alias('model.users'),
-  members: Ember.computed.alias('department.members'),
+const { computed, RSVP, get, getProperties, set } = Ember;
 
-  availableUsers: Ember.computed('members.[]', 'users.[]', function() {
-    const { members, users } = this.getProperties('members', 'users');
+export default Ember.Controller.extend({
+  selected: [],
+
+  department: computed.alias('model.department'),
+  users: computed.alias('model.users'),
+
+  availableUsers: computed('department.members.[]', 'users.[]', function() {
+    const { department, users } = getProperties(this, 'department', 'users');
+
+    const members = get(department, 'members');
 
     return users.reject((user) => {
       return members.includes(user);
@@ -14,7 +19,19 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    addMembers() {
+    addMembers(members) {
+      const department = get(this, 'department');
+
+      members.forEach(user => set(user, 'department', department));
+
+      RSVP.all(
+        members.map(user => user.save())
+      ).then(() => set(this, 'selected', []))
+    },
+
+    removeMember(member) {
+      set(member, 'department', null);
+      member.save();
     },
 
     remove(){

@@ -6,5 +6,10 @@ export default Ember.Route.extend({
       department: this.get('store').findRecord('department', params.department_id),
       users: this.get('store').findAll('user')
     });
+  },
+  
+  setupController: function(controller, model){
+    this._super(controller, model);
+    controller.set('selected', []);
   }
 });

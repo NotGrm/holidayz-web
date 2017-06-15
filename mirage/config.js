@@ -26,18 +26,8 @@ export default function() {
     http://www.ember-cli-mirage.com/docs/v0.2.x/shorthands/
   */
 
-  let models = [
-    'users',
-    'departments',
-  ]
-
-  for (let model of models) {
-    this.get(`/${model}`);
-    this.get(`/${model}/:id`);
-    this.post(`/${model}`);
-    this.patch(`/${model}/:id`);
-    this.del(`/${model}/:id`);
-  }
+  this.resource('users');
+  this.resource('departments');
 
 
   this.post('/api/token-auth', (schema, request) => {

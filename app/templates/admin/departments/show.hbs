@@ -12,21 +12,17 @@
     options=availableUsers
     selected=selected
     onchange=(action (mut selected))
-    as |user|
-  }}
+    as |user| }}
     {{user.fullName}}
   {{/power-select-multiple}}
-  <button {{action 'addMembers'}}>Add users to department</button>
+  <button {{action 'addMembers' selected}}>Add users to department</button>
 
   <ul>
     {{#each department.members as |user|}}
-      <li>{{user.fullName}}</li>
+      <li>
+        {{user.fullName}} 
+        <button {{action 'removeMember' user}}>Remove from department</button>
+      </li>
     {{/each}}
   </ul>
-  <ul>
-    {{#each selected as |user|}}
-      <li>{{user.fullName}}</li>
-    {{/each}}
-  </ul>
-
 </div>

@@ -1,4 +1,19 @@
 <form {{action onSubmit on='submit'}}>
-  <input type="text" value={{department.name}} onchange={{action (mut department.name) value="target.value"}} data-test-firstname>
-  <button type="submit" name="button" data-test-submit>Submit</button>
+  <div>
+    <label>
+      Name:
+      <input type="text" value={{department.name}} onchange={{action (mut department.name) value="target.value"}} data-test-firstname>
+    </label>
+  </div>
+  <div>
+    <label>
+      Manager:
+      {{#power-select options=managers selected=department.manager onchange=(action (mut department.manager)) as |user|}}
+        {{user.fullName}}
+      {{/power-select}}
+    </label>
+  </div>
+  <div>
+    <button type="submit" name="button" data-test-submit>Submit</button>
+  </div>
 </form>

@@ -10,11 +10,14 @@ export default function(server) {
   // server.createList('post', 10);
 
   server.create('user', { id: 1234567890, role: 'admin' });
+  server.create('user', { id: 7894561229, role: 'manager' });
   server.create('user', { id: 7894561230, role: 'employee' });
 
-  let departments = server.createList('department', 3);
+  server.createList('department', 3).forEach((department) => {
+    let manager = server.create('user', { department, role: 'manager' });
 
-  departments.forEach((department) => {
-    server.createList('user', 3, {department});
+    department.update('manager', manager)
+
+    server.createList('user', 3, { department, role: 'employee' });
   })
 }

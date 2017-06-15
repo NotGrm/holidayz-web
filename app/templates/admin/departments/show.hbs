@@ -1,8 +1,10 @@
 <div class="">
   <h1>
     {{department.name}}
-    <small>{{#link-to 'admin.departments.edit' department}}Edit{{/link-to}}</small>
+    <small>{{#link-to 'admin.departments.edit' department.id}}Edit{{/link-to}}</small>
   </h1>
+
+  <p><strong>Manager:</strong> {{department.manager.fullName}}</p> 
 
   <button {{action 'remove'}}>Remove</button>
 

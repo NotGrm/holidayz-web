@@ -1,8 +1,37 @@
 <form {{action onSubmit on='submit'}}>
-  <input type="text" value={{user.firstName}} onchange={{action (mut user.firstName) value="target.value"}} data-test-firstname>
-  <input type="text" value={{user.lastName}} onchange={{action (mut user.lastName) value="target.value"}} data-test-lastname>
-  <input type="text" value={{user.email}} onchange={{action (mut user.email) value="target.value"}} data-test-email>
-  <input type="text" value={{user.reference}} onchange={{action (mut user.reference) value="target.value"}} data-test-reference>
-  <input type="text" value={{user.role}} onchange={{action (mut user.role) value="target.value"}} data-test-role>
-  <button type="submit" name="button" data-test-submit>Submit</button>
+  <div>
+    <label>
+      First name:
+      <input type="text" value={{user.firstName}} onchange={{action (mut user.firstName) value="target.value"}} data-test-firstname>
+    </label>
+  </div>
+  <div>
+    <label>
+      Last name:
+      <input type="text" value={{user.lastName}} onchange={{action (mut user.lastName) value="target.value"}} data-test-lastname>
+    </label>
+  </div>
+  <div>
+    <label>
+      Email:
+      <input type="text" value={{user.email}} onchange={{action (mut user.email) value="target.value"}} data-test-email>
+    </label>
+  </div>
+  <div>
+    <label>
+      Reference:
+      <input type="text" value={{user.reference}} onchange={{action (mut user.reference) value="target.value"}} data-test-reference>
+    </label>
+  </div>
+  <div>
+    <label>
+      Role:
+      {{#power-select options=roles selected=user.role searchEnabled=false onchange=(action (mut user.role)) as |role|}}
+        {{role}}
+      {{/power-select}}
+    </label>
+  </div>
+  <div>
+    <button type="submit" name="button" data-test-submit>Submit</button>
+  </div>
 </form>
